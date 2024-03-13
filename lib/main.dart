@@ -12,12 +12,12 @@ void main() {
         ChangeNotifierProvider(create: (_) => ThemeProvider()),
         Provider<Repositories>(
           create: (_) => Repositories(),
-        ), // Добавляем провайдер для Repositories
+        ),
         BlocProvider(
           create: (context) => CounterCubit(
             repositories: RepositoryProvider.of<Repositories>(context)!,
           ),
-        ), // Обратите внимание на использование !, чтобы избежать ошибки компиляции.
+        ), 
       ],
       child: const MyApp(),
     ),
@@ -54,7 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
 
-    // Инициализация блока и первоначальный инкремент
+    
     BlocProvider.of<CounterCubit>(context).increment();
     BlocProvider.of<CounterCubit>(context).decrement();
   }
@@ -79,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
               'You have pushed the button this many times:',
               style: TextStyle(color: themeProvider.textChange),
             ),
-            // Вывод значения счетчика
+           
             BlocBuilder<CounterCubit, CounterState>(
               builder: (context, state) {
                 if (state is CounterSuccess) {
