@@ -15,7 +15,7 @@ void main() {
         ),
         BlocProvider(
           create: (context) => CounterCubit(
-            repositories: RepositoryProvider.of<Repositories>(context)!,
+            repositories: RepositoryProvider.of<Repositories>(context),
           ),
         ), 
       ],
@@ -25,7 +25,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key});
+  const MyApp({super.key, });
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title});
+  const MyHomePage({super.key,  required this.title});
 
   final String title;
 
@@ -56,7 +56,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
     
     BlocProvider.of<CounterCubit>(context).increment();
+
     BlocProvider.of<CounterCubit>(context).decrement();
+
   }
 
   @override
@@ -87,7 +89,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     '${state.increment}',style: TextStyle(color: themeProvider.textChange),
                   );
                 } else {
-                  return Text('Error');
+                  return const Text('Error');
                 }
               },
             ),
@@ -123,11 +125,11 @@ class _MyHomePageState extends State<MyHomePage> {
     ),
     FloatingActionButton(
       onPressed: () {
-         BlocProvider.of<CounterCubit>(context).getWeather();
+         BlocProvider.of<CounterCubit>(context).getweat();
        
       },
       tooltip: 'Weather',
-      child: Icon(Icons.cloud),
+      child: const Icon(Icons.cloud),
     ),
   ],
 ),

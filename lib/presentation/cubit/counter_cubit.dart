@@ -28,7 +28,7 @@ class CounterCubit extends Cubit<CounterState> {
       emit(CounterError());
     }
   }
-  Future<void> getWeather()async{
+  Future<void> getweat()async{
     emit(CounterLoading());
     try{
       final WeatherModel weatherModel=await repositories.getWeather();

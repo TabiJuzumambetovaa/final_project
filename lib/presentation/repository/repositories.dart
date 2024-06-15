@@ -19,16 +19,13 @@ class Repositories {
     return counter;
   }
 
-  Dio dio = DioSettings().dio;
   Future<WeatherModel> getWeather() async {
-    final Response response = await dio.get(
-        "https://api.openweathermap.org/data/2.5/weather?",
-        queryParameters:{
-          "lat":42.882004,
-          "lon":74.582748,
-          "appid":"65b23f22ef314a828ef75c5ef018232d",
-          "units":"metric"
-        } );
+    Dio dio = DioSettings().dio;
+    final Response response = await dio.get("weather", queryParameters: {
+      "lat": 42.882004,
+      "lon": 74.582748,
+      "appid": "65b23f22ef314a828ef75c5ef018232d",
+    });
     return WeatherModel.fromJson(response.data);
   }
 }

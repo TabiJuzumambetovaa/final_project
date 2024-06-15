@@ -10,7 +10,7 @@ class DioSettings {
 
   Dio dio = Dio(
     BaseOptions(
-      baseUrl: 'https://opentdb.com/api.php?amount=10',
+      baseUrl: 'https://api.openweathermap.org/data/2.5/',
       contentType: "application/json",
       headers: {
         "Accept": "application/json",
